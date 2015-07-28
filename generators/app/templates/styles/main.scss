@@ -1,0 +1,15 @@
+// customized bootstrap. open styles/bootstrap and uncomment needed bootstrap components.
+// the bootstrap file includes the variables import, so if not using bootstrap,
+// add @import 'variables'; here instead);
+@import 'bootstrap';
+
+// Libs
+@import '../bower_components/fontawesome/scss/font-awesome';
+
+// Locals
+@import 'layout';
+@import 'header';
+
+// Overrides
+
+// Components

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <title><%= appTitle %></title>
+
+  <!-- Required Esri/Dojo Stylesheets -->
+  <link rel="stylesheet" href="//js.arcgis.com/3.14/esri/css/esri.css" />
+
+  <!-- EAGLE-I Stylesheet -->
+  <!-- build:css assets/css/main.min.css -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  <!-- endbuild -->
+
+  <!-- Required Libraries -->
+  <script src="lib/vendor.min.js"></script>
+
+</head>
+
+<body>
+  <div class="main-container"></div>
+
+  <script>
+  /* global location:true */
+  /* jshint unused:false */
+    var pathRegex = new RegExp(/\/[^\/]+$/);
+    var locationPath = location.pathname.replace(pathRegex, '');
+    var dojoConfig = {
+      parseOnLoad: true,
+      isDebug: true,
+      async: true,
+      // if you add local packages here, be sure to add them to
+      // the gruntfile under the build task
+      packages: [{
+        name: 'app',
+        location: locationPath + 'js/app'
+      }, {
+        name: 'components',
+        location: locationPath + 'js/components'
+      }, {
+        name: 'config',
+        location: locationPath + 'js/config'
+      }]
+    };
+  </script>
+  <!-- Esri JSAPI -->
+  <script src="//js.arcgis.com/3.14/init.js"></script>
+  <!-- Cache of custom modules -->
+  <!-- build:js js/app.min.js -->
+  <script src="js/empty.js"></script>
+  <!-- endbuild -->
+  <!-- Application Entry Point -->
+  <script>
+    require(['app/controller']);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+// BASE STYLES -- positioning the main elements
+
+html,
+body,
+.main-container {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: Optima, Candera, sans-serif;
+}
+
+header {
+  height: $header-height;
+  margin: 0;
+}
+
+.map-view {
+  position: absolute;
+  top: $header-height;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}

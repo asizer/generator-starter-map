@@ -1,0 +1,21 @@
+header {
+  background: $brand-primary
+}
+
+header {
+  .title, .subtitle {
+    line-height: $header-height - 5;
+    color: $gray-light;
+    margin: 0 10px;
+  }
+  .title {
+    font-size: 40px;
+    font-weight: bold;
+  }
+  .subtitle {
+    font-size: 24px;
+  }
+  & div {
+    float: left;
+  }
+}
