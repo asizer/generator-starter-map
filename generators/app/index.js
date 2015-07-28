@@ -14,28 +14,32 @@ module.exports = yeoman.generators.Base.extend({
     ));
 
     var prompts = [{
-      type: 'String',
+      type: 'input',
       name: 'packageName',
-      message: 'Choose a package name for this project. (no spaces!)'
+      message: 'Choose a package name for this project. (no spaces!)',
+      default: 'starter-app'
     }, {
-      type: 'String',
+      type: 'input',
       name: 'title',
-      message: 'Choose a title for this project. '
+      message: 'Choose a title for this project.',
+      default: 'Starter Application'
     }, {
-      type: 'String',
+      type: 'input',
       name: 'subtitle',
-      message: 'Choose a subtitle for this project. '
+      message: 'Choose a subtitle for this project.',
+      default: 'built with Yeoman'
     }, {
-      type: 'Boolean',
+      type: 'confirm',
       name: 'webmap',
-      message: 'Will your project be using a webmap? '
+      message: 'Will your project be using a webmap?',
+      default: false
     }];
 
     this.prompt(prompts, function(props) {
-      this.name = props.packageName || 'starter-app';
-      this.appTitle = props.title || 'Starter Application';
-      this.subtitle = props.subtitle || 'built with Yeoman';
-      this.webmap = props.webmap || false;
+      this.name = props.packageName;
+      this.appTitle = props.title;
+      this.subtitle = props.subtitle;
+      this.webmap = props.webmap;
 
       done();
     }.bind(this));
