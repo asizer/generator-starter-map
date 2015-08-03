@@ -1,5 +1,7 @@
 # generator-starter-map 
 
+_Nota bene: This is not actually a registered npm package yet. You will have to download it and use `npm link` (https://docs.npmjs.com/cli/link)_
+
 ## Getting Started
 
 ### What is Yeoman?

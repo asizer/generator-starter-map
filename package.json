@@ -1,10 +1,13 @@
 {
   "name": "generator-starter-map",
-  "version": "0.0.0",
-  "description": "Yeoman generator",
+  "version": "0.1.0",
+  "description": "Yeoman generator for starter esri mapping application",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "asizer/generator-starter-map",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/asizer/generator-starter-map.git"
+  },
   "author": {
     "name": "Alison Sizer",
     "email": "",
