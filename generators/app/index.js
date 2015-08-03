@@ -15,14 +15,14 @@ module.exports = yeoman.generators.Base.extend({
 
     var prompts = [{
       type: 'input',
-      name: 'packageName',
-      message: 'Choose a package name for this project. (no spaces!)',
-      default: 'starter-app'
-    }, {
-      type: 'input',
       name: 'title',
       message: 'Choose a title for this project.',
-      default: 'Starter Application'
+      default: 'Starter Mapping Application'
+    }, {
+      type: 'input',
+      name: 'packageName',
+      message: 'Choose a package name for this project. (no spaces!)',
+      default: 'starter-map'
     }, {
       type: 'input',
       name: 'subtitle',
@@ -47,7 +47,6 @@ module.exports = yeoman.generators.Base.extend({
 
   writing: {
     app: function() {
-      console.log('top of app', this.name, this.appTitle, this.subtitle, this.webmap);
 
       // setup files
       this.fs.copyTpl(
@@ -70,7 +69,6 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     projectfiles: function() {
-      console.log('top of project files', this.name, this.appTitle, this.subtitle, this.webmap);
       this.fs.copyTpl(
         this.templatePath('_index.html'),
         this.destinationPath('index.html'), this);
