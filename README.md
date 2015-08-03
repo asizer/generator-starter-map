@@ -1,4 +1,4 @@
-# generator-psdbs 
+# generator-starter-map 
 
 ## Getting Started
 
@@ -26,16 +26,16 @@ npm install -g grunt-cli
 
 Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
 
-To install generator-psdbs from npm, run:
+To install generator-starter-map from npm, run:
 
 ```
-npm install -g generator-psdbs
+npm install -g generator-starter-map
 ```
 
 Finally, create a folder where your new project will live, and run the generator:
 
 ```
-yo psdbs
+yo starter-map
 ```
 
 ### Getting To Know Yeoman

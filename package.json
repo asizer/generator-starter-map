@@ -1,10 +1,10 @@
 {
-  "name": "generator-psdbs",
+  "name": "generator-starter-map",
   "version": "0.0.0",
   "description": "Yeoman generator",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "asizer/generator-psdbs",
+  "repository": "asizer/generator-starter-map",
   "author": {
     "name": "Alison Sizer",
     "email": "",
