@@ -136,7 +136,7 @@ module.exports = function(grunt) {
       build: {
         files: [{
           cwd: 'js',
-          src: ['**', '!empty.js'],
+          src: ['**'],
           dest: 'release/js',
           expand: true
         }, {
@@ -199,7 +199,6 @@ module.exports = function(grunt) {
             // all js and html files from js folder except config
             'js/**/*.js',
             'js/**/*.html',
-            '!js/empty.js',
             '!js/config/*'
           ]
         }
