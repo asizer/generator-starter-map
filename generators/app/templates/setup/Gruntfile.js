@@ -170,77 +170,39 @@ module.exports = function(grunt) {
             'bower_components/backbone/backbone-min.js'
           ]
         }
-      },
+      }
+    },
+
+    uglify: {
+      unmin_dep: {
+        // put unminified bower files here, then add the minified version
+        // to the concat:vendor task.
+        files: [{
+          // src: 'lib/bower/backbone.js',
+          // dest: 'lib/bower/backbone-min.js'
+        }]
+      }
+    },
+
+    dojo_alt_build: {
       app: {
         options: {
-          banner: 'require({\ncache: {\n',
-          footer: '\n}});\n(function(){ require({cache:{}}); })();',
-          separator: ',' + grunt.util.linefeed,
-          process: function(src, filepath) {
-            var returnStr = '\n// Source: ' + filepath + '\n';
-
-            // replace path name with package name.
-            var pkgs = {
-              // custom code
-              'app': 'js/app',
-              'components': 'js/components'
-            };
-            for (var key in pkgs) {
-              if (pkgs.hasOwnProperty(key)) {
-                if (filepath.indexOf(pkgs[key]) === 0) {
-                  filepath = key + filepath.replace(pkgs[key], '');
-                  break;
-                }
-              }
-            }
-            // process file
-            if (filepath.indexOf('.js', filepath.length - 3) >= 0) {
-              // add file name, then file text as contents of function() {}
-              returnStr += '\'' + filepath.replace('.js', '') + '\': ' +
-                'function() {\n' + src + '\n}';
-            } else if (filepath.indexOf('.html', filepath.length - 5) >= 0) {
-              // add file name as url, then html template, stripping out newlines and tabs
-              returnStr += '\'url:' + filepath.replace('js/', '') + '\': ' +
-                '\'' + src.replace(/\r+\s*/g, ' ').replace(/\n+\s*/g, ' ') + '\'';
-              if (src.indexOf('\'') >= 0) {
-                console.log('The template file ' + filepath + ' contains single quotes. This might break the build.');
-              }
-            } else {
-              console.error('uh oh! ' + filepath + ' fell through');
-              return;
-            }
-            return returnStr;
+          pkgs: {
+            // list the local packages in dojoConfig that should be built.
+            // (don't include config package here)
+            'app': 'js/app',
+            'components': 'js/components'
           }
         },
         files: {
-          'release/js/app.js': [
-            // everything from js folder
+          'release/js/app.min.js': [
+            // all js and html files from js folder except config
             'js/**/*.js',
             'js/**/*.html',
             '!js/empty.js',
             '!js/config/*'
           ]
         }
-      },
-    },
-
-    uglify: {
-      unmin_dep: {
-        files: [{
-          // put unminified bower files here, then add the minified version
-          // to the concat:vendor task.
-          // src: 'lib/bower/backbone.js',
-          // dest: 'lib/bower/backbone-min.js'
-        }]
-      },
-      app: {
-        options: {
-          sourceMap: true
-        },
-        files: [{
-          src: 'release/js/app.js',
-          dest: 'release/js/app.min.js'
-        }]
       }
     },
 
@@ -269,6 +231,6 @@ module.exports = function(grunt) {
   grunt.registerTask('serve', ['sass:dev', 'jshint:js', 'connect:server', 'watch']);
 
   // Run this task to generate new release folder
-  grunt.registerTask('build', ['clean:build', 'sass:dist', 'jshint:js', 'concat:app', 'copy:build', 'uglify:app', 'usemin:all', 'connect:release']);
+  grunt.registerTask('build', ['clean:build', 'sass:dist', 'jshint:js', 'copy:build', 'dojo_alt_build:app', 'usemin:all', 'connect:release']);
 
 };
